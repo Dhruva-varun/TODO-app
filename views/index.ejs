@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="css/style.css">             
+</head>
+<body>
+    <div class="table-container">
+       <h2 class="title">Todo List</h2> 
+       <div>
+        <a href="/add-task" class="btn">Add Task</a>
+       </div>
+       <br>
+       <table>
+        <tr>
+            <th>Task</th>
+            <th>Description</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <% for(let i=0;i< tasks.length;i++)  {%>
+            <td><%= tasks[i].task %></td>
+            <td><%= tasks[i].desc %></td>
+            <td><%= moment(tasks[i].createdAt).format("DD MMM, YYYY, HH:mm:ss") %></td>
+            <td><%= moment(tasks[i].updatedAt).format("DD MMM, YYYY, HH:mm:ss") %></td>
+            <td>
+                <a href="/update-task?id=<%= tasks[i]._id %>" class="btn">Edit</a>
+                <a href="/delete-task?id=<%= tasks[i]._id %>" class="btn">Delete</a>
+            </td>
+        </tr>
+         <%} %>
+            
+       
+       </table>
+    </div>
+</body>
+</html>
